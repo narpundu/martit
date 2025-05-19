@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join Mart IT | Get Your Store Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #f9f9f9;
+      color: #1c1c1e;
+    }
+    header {
+      background-color: #ffffff;
+      padding: 20px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-container img {
+      height: 60px;
+    }
+    header h1 {
+      color: #1c1c1e;
+      font-size: 2rem;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #1c1c1e;
+      font-weight: 500;
+    }
+    nav a:last-child button {
+      padding: 10px 20px;
+      background-color: #0071e3;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    main h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0071e3;
+    }
+    main p {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    form button {
+      background-color: #0071e3;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto 0 auto;
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background-color: #005bb5;
+    }
+
+    .thank-you {
+      display: none;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f1f1f1;
+      color: #777;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav a {
+        margin-top: 10px;
+      }
+      main {
+        margin: 40px 20px;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="logo1.png" alt="Mart IT Logo" />
+      <h1>Mart IT</h1>
+    </div>
+    <nav>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#ecommerce">E-Commerce</a>
+      <a href="index.html#delivery">10 Min Delivery</a>
+      <a href="index.html#repair">Instant Repair</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="join.html"><button>Join Your Store</button></a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-section">
+      <h2>Join Your Store with Mart IT</h2>
+      <p>Become a part of India's fastest growing tech marketplace, delivery, and repair network. Fill out the form to get started.</p>
+
+      <form id="joinForm">
+        <input type="text" name="storeName" placeholder="Store Name" required />
+        <input type="text" name="ownerName" placeholder="Owner Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+        <textarea name="address" placeholder="Store Address" rows="4" required></textarea>
+        <textarea name="additionalInfo" placeholder="Additional Information (optional)" rows="4"></textarea>
+        <button type="submit">Get Your Store Online</button>
+      </form>
+
+      <div class="thank-you" id="thankYouMessage">
+        <h2>🎉 Thank You!</h2>
+        <p>We’ve received your request. Redirecting to homepage...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mart IT. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('joinForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const mailtoLink = `mailto:narpundu@gmail.com?subject=New Store Join Request&body=${
+        Array.from(formData).map(([k, v]) => `${k}: ${v}`).join('%0D%0A')
+      }`;
+
+      window.location.href = mailtoLink;
+
+      this.style.display = 'none';
+      document.getElementById('thankYouMessage').style.display = 'block';
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
